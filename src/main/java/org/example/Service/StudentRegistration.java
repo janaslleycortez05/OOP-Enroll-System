@@ -2,49 +2,56 @@ package org.example.Service;
 
 import org.example.Entity.Student;
 
-import java.util.ArrayList;
-
 public class StudentRegistration {
 
-    private ArrayList<Student> studentList = new ArrayList<>();
+    private String courseID;
+    private String courseName;
+    private String program;
 
-    public void saveStudent(Student student) {
-        studentList.add(student);
-        System.out.println("Student saved successfully.");
+    public void Course(String courseID, String courseName, String program) {
+        this.courseID = courseID;
+        this.courseName = courseName;
+        this.program = program;
+    }
+
+    public String getCourseID() {
+        return courseID;
+    }
+
+    public String getCourseName() {
+        return courseName;
+    }
+
+    public String getProgram() {
+        return program;
+    }
+
+    public void setCourseID(String courseID) {
+        this.courseID = courseID;
+    }
+
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
+    }
+
+    public void setProgram(String program) {
+        this.program = program;
+    }
+
+    @Override
+    public String toString() {
+        return courseID + " - " + courseName + " - " + program;
+    }
+
+    public void saveStudent(Student s1) {
     }
 
     public void displayAllStudents() {
-        if (studentList.isEmpty()) {
-            System.out.println("No students found.");
-            return;
-        }
-
-        for (Student s : studentList) {
-            System.out.println("----------------------");
-            System.out.println(s);
-        }
     }
 
-    public void updateStudent(String studentID, String newName, String newProgram) {
-        for (Student s : studentList) {
-            if (s.getStudentID().equals(studentID)) {
-                s.setStudentName(newName);
-                s.setProgram(newProgram);
-                System.out.println("Student updated successfully.");
-                return;
-            }
-        }
-        System.out.println("Student not found.");
+    public void updateStudent(String number, String johnUpdated, String softwareEngineering) {
     }
 
-    public void removeStudent(String studentID) {
-        for (Student s : studentList) {
-            if (s.getStudentID().equals(studentID)) {
-                studentList.remove(s);
-                System.out.println("Student removed successfully.");
-                return;
-            }
-        }
-        System.out.println("Student not found.");
+    public void removeStudent(String number) {
     }
 }
