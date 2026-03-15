@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class CourseRegistration {
 
-    private ArrayList<Course> courseList = new ArrayList<>();
+    private final ArrayList<Course> courseList = new ArrayList<>();
 
     // Save course
     public void saveCourse(Course course) {

@@ -1,6 +1,6 @@
 package org.example.Entity;
 
-public class Person {
+public abstract class Person {
 
     private int ID;
     private String name;
@@ -9,7 +9,7 @@ public class Person {
         return ID;
     }
 
-    public void setID(String ID) {
+    public void setID(int ID) {
         this.ID = ID;
     }
 
@@ -20,5 +20,6 @@ public class Person {
     public void setName(String name) {
         this.name = name;
     }
-}
 
+    public abstract void mainTask();
+}

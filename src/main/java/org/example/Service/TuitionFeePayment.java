@@ -2,16 +2,15 @@ package org.example.Service;
 
 public class TuitionFeePayment {
 
-    private double pricePerUnit = 1000.00;
     private double balance;
-    private double totalTuition;
 
     public double calculateTuitionFee(int units, double discountRate) {
 
-        totalTuition = units * pricePerUnit;
+        double pricePerUnit = 1000.00;
+        double totalTuition = units * pricePerUnit;
         double discount = totalTuition * discountRate;
 
-        totalTuition = totalTuition - discount;
+        totalTuition -= discount;
         balance = totalTuition;
 
         return totalTuition;

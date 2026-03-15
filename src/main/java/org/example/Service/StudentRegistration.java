@@ -1,57 +1,34 @@
 package org.example.Service;
 
 import org.example.Entity.Student;
+import java.util.ArrayList;
 
 public class StudentRegistration {
 
-    private String courseID;
-    private String courseName;
-    private String program;
+    private final ArrayList<Student> studentList = new ArrayList<>();
 
-    public void Course(String courseID, String courseName, String program) {
-        this.courseID = courseID;
-        this.courseName = courseName;
-        this.program = program;
+    public void saveStudent(Student student) {
+        studentList.add(student);
     }
 
-    public String getCourseID() {
-        return courseID;
+    public void displayAllStudent() {
+        for (Student s : studentList) {
+            System.out.println("Student ID: " + s.getID());
+            System.out.println("Student Name: " + s.getName());
+            System.out.println("Program: " + s.getProgram());
+            System.out.println();
+        }
     }
 
-    public String getCourseName() {
-        return courseName;
+    public void updateStudent(int id, String newName) {
+        for (Student s : studentList) {
+            if (s.getID() == id) {
+                s.setName(newName);
+            }
+        }
     }
 
-    public String getProgram() {
-        return program;
-    }
-
-    public void setCourseID(String courseID) {
-        this.courseID = courseID;
-    }
-
-    public void setCourseName(String courseName) {
-        this.courseName = courseName;
-    }
-
-    public void setProgram(String program) {
-        this.program = program;
-    }
-
-    @Override
-    public String toString() {
-        return courseID + " - " + courseName + " - " + program;
-    }
-
-    public void saveStudent(Student s1) {
-    }
-
-    public void displayAllStudents() {
-    }
-
-    public void updateStudent(String number, String johnUpdated, String softwareEngineering) {
-    }
-
-    public void removeStudent(String number) {
+    public void removeStudent(int id) {
+        studentList.removeIf(s -> s.getID() == id);
     }
 }
