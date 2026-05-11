@@ -2,12 +2,19 @@ package Interfaces;
 
 import Entities.Instructor;
 import Entities.Section;
+import java.util.List;
 
 public interface IInstructorService {
 
     void addInstructor(Instructor instructor);
 
-    void assignInstructorToSection(Instructor instructor, Section section);
+    void updateInstructor(Instructor instructor);
 
-    void getInstructorDetails(String instructorId);
+    void removeInstructor(String instructorId);
+
+    Instructor getInstructorDetails(String instructorId);
+
+    List<Instructor> getAllInstructors();
+
+    void assignInstructorToSection(Instructor instructor, Section section);
 }

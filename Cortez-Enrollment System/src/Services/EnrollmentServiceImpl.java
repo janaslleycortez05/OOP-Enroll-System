@@ -3,6 +3,10 @@ package Services;
 import Interfaces.IEnrollmentService;
 import Entities.Student;
 import Entities.Section;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import Entities.Department;
 import Exceptions.SectionFullException;
 
@@ -19,20 +23,24 @@ public class EnrollmentServiceImpl implements IEnrollmentService {
     }
 
     @Override
-    public void viewDepartmentHierarchy(Department department) {
+public List<String> viewDepartmentHierarchy(Department department) {
 
-        System.out.println("Department: " + department.getDepartmentName());
+    List<String> output = new ArrayList<>();
 
-        department.getSections().forEach(section -> {
-            System.out.println(" Section: " + section.getSectionName());
+    output.add("Department: " + department.getDepartmentName());
 
-            if (section.getInstructor() != null) {
-                System.out.println("  Instructor: " + section.getInstructor().getName());
-            }
+    for (Section section : department.getSections()) {
+        output.add(" Section: " + section.getSectionName());
 
-            section.getEnrolledStudents().forEach(student ->
-                System.out.println("   Student: " + student.getName())
-            );
-        });
+        if (section.getInstructor() != null) {
+            output.add("  Instructor: " + section.getInstructor().getName());
+        }
+
+        for (Student s : section.getEnrolledStudents()) {
+            output.add("   Student: " + s.getName());
+        }
     }
+
+    return output;
+}
 }
